@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C1082E4-C1C2-4E92-95AA-19D376CAA556}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DB10DE47-EDAC-48BD-B563-F9568ACA3065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "src\DependencyInjection\DependencyInjection.csproj", "{53F541B1-B2F3-4536-9716-3866B762FB02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{A5680217-8D1E-4892-B192-63F69A2BB171}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		Github.Directory.Build.props = Github.Directory.Build.props
+		LICENSE = LICENSE
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53F541B1-B2F3-4536-9716-3866B762FB02} = {9C1082E4-C1C2-4E92-95AA-19D376CAA556}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53F541B1-B2F3-4536-9716-3866B762FB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F541B1-B2F3-4536-9716-3866B762FB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F541B1-B2F3-4536-9716-3866B762FB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F541B1-B2F3-4536-9716-3866B762FB02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+
+        <PackageId>byCrookie.DependencyInjection</PackageId>
+
+        <Title>DependencyInjection</Title>
+        <Authors>byCrookie</Authors>
+        <PackageTags>dependency-injection;microsoft</PackageTags>
+        <Description>A microsoft dependency-injection extension providing support for modules.</Description>
+
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/byCrookie/DependencyInjection</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/byCrookie/DependencyInjection</RepositoryUrl>
+
+        <Copyright>https://github.com/byCrookie/DependencyInjection/blob/main/LICENSE</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="byCrookie.NugetSdk" />
+        <PackageReference Include="Jab" />
+    </ItemGroup>
+
+</Project>
