@@ -1,4 +1,6 @@
-﻿namespace DependencyInjection.Factory;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace DependencyInjection.Factory;
 
 public class Factory : IFactory
 {
@@ -22,12 +24,12 @@ public class Factory : IFactory
     public object Create(Type type)
     {
         var service = _serviceProvider.GetService(type);
-        
+
         if (service is null)
         {
             throw new ArgumentException($"Type {type.FullName} can not be resolved. Try register explicatly.");
         }
-        
+
         return service;
     }
 
@@ -44,90 +46,110 @@ public class Factory : IFactory
 
 public class Factory<T> : IFactory<T> where T : notnull
 {
-    private readonly Func<T> _factory;
+    private readonly IFactory _factory;
 
-    public Factory(Func<T> factory)
+    public Factory(IFactory factory)
     {
         _factory = factory;
     }
 
     public T Create()
     {
-        return _factory();
+        return _factory.Create<T>();
     }
 }
 
-public class Factory<TParameter, T> : IFactory<TParameter, T> where T : notnull
+public class Factory<TParameter, T> : IFactory<TParameter, T>
+    where T : notnull
+    where TParameter : notnull
 {
-    private readonly Func<TParameter, T> _factory;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Factory(Func<TParameter, T> factory)
+    public Factory(IServiceProvider serviceProvider)
     {
-        _factory = factory;
+        _serviceProvider = serviceProvider;
     }
 
     public T Create(TParameter parameter)
     {
-        return _factory(parameter);
+        return ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameter);
     }
 }
 
-public class Factory<TParameter1, TParameter2, T> : IFactory<TParameter1, TParameter2, T> where T : notnull
+public class Factory<TParameter1, TParameter2, T> : IFactory<TParameter1, TParameter2, T>
+    where T : notnull
+    where TParameter1 : notnull
+    where TParameter2 : notnull
 {
-    private readonly Func<TParameter1, TParameter2, T> _factory;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Factory(Func<TParameter1, TParameter2, T> factory)
+    public Factory(IServiceProvider serviceProvider)
     {
-        _factory = factory;
+        _serviceProvider = serviceProvider;
     }
 
     public T Create(TParameter1 parameter1, TParameter2 parameter2)
     {
-        return _factory(parameter1, parameter2);
+        return ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameter1, parameter2);
     }
 }
 
-public class Factory<TParameter1, TParameter2, TParameter3, T> : IFactory<TParameter1, TParameter2, TParameter3, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, T> : IFactory<TParameter1, TParameter2, TParameter3, T>
+    where T : notnull
+    where TParameter1 : notnull
+    where TParameter2 : notnull
+    where TParameter3 : notnull
 {
-    private readonly Func<TParameter1, TParameter2, TParameter3, T> _factory;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Factory(Func<TParameter1, TParameter2, TParameter3, T> factory)
+    public Factory(IServiceProvider serviceProvider)
     {
-        _factory = factory;
+        _serviceProvider = serviceProvider;
     }
 
     public T Create(TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3)
     {
-        return _factory(parameter1, parameter2, parameter3);
+        return ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameter1, parameter2, parameter3);
     }
 }
 
-public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, T>
+    where T : notnull
+    where TParameter1 : notnull
+    where TParameter2 : notnull
+    where TParameter3 : notnull
+    where TParameter4 : notnull
 {
-    private readonly Func<TParameter1, TParameter2, TParameter3, TParameter4, T> _factory;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Factory(Func<TParameter1, TParameter2, TParameter3, TParameter4, T> factory)
+    public Factory(IServiceProvider serviceProvider)
     {
-        _factory = factory;
+        _serviceProvider = serviceProvider;
     }
 
     public T Create(TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3, TParameter4 parameter4)
     {
-        return _factory(parameter1, parameter2, parameter3, parameter4);
+        return ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameter1, parameter2, parameter3, parameter4);
     }
 }
 
-public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T>
+    where T : notnull
+    where TParameter1 : notnull
+    where TParameter2 : notnull
+    where TParameter3 : notnull
+    where TParameter4 : notnull
+    where TParameter5 : notnull
 {
-    private readonly Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> _factory;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Factory(Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> factory)
+    public Factory(IServiceProvider serviceProvider)
     {
-        _factory = factory;
+        _serviceProvider = serviceProvider;
     }
 
     public T Create(TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3, TParameter4 parameter4, TParameter5 parameter5)
     {
-        return _factory(parameter1, parameter2, parameter3, parameter4, parameter5);
+        return ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameter1, parameter2, parameter3, parameter4, parameter5);
     }
 }
