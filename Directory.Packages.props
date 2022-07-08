@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup>
-        <PackageVersion Include="byCrookie.NugetSdk" Version="1.0.11"/>
+        <PackageVersion Include="byCrookie.NugetSdk" Version="1.0.12"/>
         <PackageVersion Include="Jab" Version="0.8.2"/>
         <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
     </ItemGroup>
