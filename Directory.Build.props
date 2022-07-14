@@ -1,20 +1,19 @@
 <Project>
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <LangVersion>10</LangVersion>
-
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        
-        <NextVersionType>Patch</NextVersionType>
         <MajorVersion>1</MajorVersion>
         <MinorVersion>0</MinorVersion>
-        <PatchVersion>5</PatchVersion>
+        <PatchVersion>6</PatchVersion>
+    </PropertyGroup>
 
+    <PropertyGroup Condition="'$(IsLocalBuild)' == '' OR '$(IsLocalBuild)' == 'true'">
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PublishPackage>true</PublishPackage>
         <PackagePublishType>local</PackagePublishType>
         <PackagePublishLocalLocation>M:\Development\Nuget\Packages</PackagePublishLocalLocation>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsLocalBuild)' == 'false'">
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PublishPackage>false</PublishPackage>
     </PropertyGroup>
 </Project>
